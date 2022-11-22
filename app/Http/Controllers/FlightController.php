@@ -7,6 +7,8 @@ use App\Models\Flight;
 
 class FlightController extends Controller
 {
+
+
     public function index()
     {
         // $flights = Flight::all();  //DB:table('flights')->get();
@@ -18,7 +20,18 @@ class FlightController extends Controller
         // // $flight->refresh();
         // echo $flight->number; // "FR 900"
         // $flight->save();
-        $max = Flight::orderBy('price','desc')->first();
-        dd($max);
+        // $max = Flight::orderBy('price','desc')->first();
+        // dd($max);
+
+        // $flight = Flight::updateOrCreate(
+        //     ['name' => 'Flight 10'],
+        //     ['price' => 99, 'number' => 'Af-10']
+        //     );
+        
+        // $flight = Flight::find(1);
+        // $flight->delete();
+
+        $flights = Flight::all();
+        dd($flights[0]);
     }
 }
