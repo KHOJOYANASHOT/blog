@@ -8,6 +8,10 @@ use App\Http\Controllers\FlightController;
 use App\Http\Controllers\CollectionController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\ABCController;
+use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CacheController;
 
 
 /*
@@ -117,12 +121,33 @@ Route::get('add-blog-post-form', [PostController::class, 'index']);
 Route::post('store-form', [PostController::class, 'store']);
 
 
-Route::get(
-    'json',
-    function () {
-        return response()->json([
-            'name' => 'Barack Obama',
-            'state' => 'Illinois'
-        ]);
-    }
-);
+// Route::get(
+//     'json',
+//     function () {
+//         return response()->json([
+//             'name' => 'Barack Obama',
+//             'state' => 'Illinois'
+//         ]);
+//     }
+// );
+
+
+Route::get('/test', [TestController::class, 'index'])
+    ->middleware(['age', 'role:editor']);
+
+
+Route::get('/terminate', [
+    ABCController::class,
+    'index'
+]);
+// ->middleware('terminate');
+
+
+Route::get('session/get', [SessionController::class, 'accessSessionData']);
+Route::get('session/set', [SessionController::class, 'storeSessionData']);
+Route::get('session/remove', [SessionController::class, 'deleteSessionData']);
+
+
+Route::get('cache/put', [CacheController::class, 'put']);
+Route::get('cache/get', [CacheController::class, 'get']);
+
