@@ -12,6 +12,9 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\ABCController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\CacheController;
+use App\Http\Controllers\IdentitycardController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 
 
 /*
@@ -151,3 +154,8 @@ Route::get('session/remove', [SessionController::class, 'deleteSessionData']);
 Route::get('cache/put', [CacheController::class, 'put']);
 Route::get('cache/get', [CacheController::class, 'get']);
 
+
+Route::get('/identity',[IdentitycardController::class,'index']);
+
+Route::get('/brand',[BrandController::class,'index']);
+Route::get('/product',[ProductController::class,'index']);
