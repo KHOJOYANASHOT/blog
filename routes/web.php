@@ -15,6 +15,8 @@ use App\Http\Controllers\CacheController;
 use App\Http\Controllers\IdentitycardController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FileUpload;
 
 
 /*
@@ -159,3 +161,11 @@ Route::get('/identity',[IdentitycardController::class,'index']);
 
 Route::get('/brand',[BrandController::class,'index']);
 Route::get('/product',[ProductController::class,'index']);
+
+Route::get('/product/store',[ProductController::class,'store']);
+Route::get('/product/show-data',[ProductController::class,'showData']);
+Route::get('/category/show-data',[CategoryController::class,'showData']);
+
+
+Route::get('/upload-file', [FileUpload::class, 'createForm']);
+Route::post('/upload-file', [FileUpload::class, 'fileUpload'])->name('fileUpload');
